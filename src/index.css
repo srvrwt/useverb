@@ -1,0 +1,153 @@
+:root {
+  --body-bg: #212121;
+  --black: #1A1A1A;
+  --orange: #FF9000;
+  --white: #ffffff;
+  --white-60: #FFFFFF90;
+  --white-70: #FFFFFFb3;
+  --solid-black: #000000;
+  --btn-hover: #E07F00;
+
+}
+
+
+@font-face {
+  font-family: 'Gotham Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Gotham Bold'), url('./assets/fonts/GothamBold.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Gotham Medium';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Gotham Medium'), url('./assets/fonts/Gothammedium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Outfit Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Outfit Regular'), url('./assets/fonts/OutfitRegular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Outfit Medium';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Outfit Medium'), url('./assets/fonts/OutfitMedium.woff') format('woff');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Gotham Medium';
+
+}
+
+body {
+  background-color: var(--body-bg);
+}
+
+.container {
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15.2px 24px;
+  background: var(--orange);
+  border-radius: 12px;
+  max-width: max-content;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--solid-black);
+  transition: all 200ms ease-in-out;
+  text-decoration: none;
+  border: 1px solid var(--orange);
+  outline: none;
+  cursor: pointer;
+  min-width: 150px;
+  text-align: center;
+  justify-content: center;
+}
+
+.btn:active {
+  opacity: .5;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover);
+}
+
+.btn-arrow {
+  width: 30px;
+  height: 18px;
+}
+
+header {
+  padding: 65px 100px;
+}
+
+.logo {
+  display: flex;
+  width: 100%;
+  max-width: 180px;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+header>.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+  max-width: 1240px;
+}
+
+h1 {
+  font-size: clamp(50px, 8vw, 70px);
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+
+h1 span {
+  color: var(--orange);
+  font-family: 'Gotham Bold';
+
+}
+
+h2 {
+  font-size: clamp(30px, 6vw, 40px);
+  font-weight: 500;
+}
+
+h2 span {
+  color: var(--orange);
+
+}
+
+h3 {
+  font-size: clamp(20px, 6vw, 30px);
+}
+
+h4 {
+  font-family: 'Gotham Medium';
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.5;
+}
