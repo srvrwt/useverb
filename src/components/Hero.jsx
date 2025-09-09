@@ -5,8 +5,10 @@ import LocationIcon from "../assets/icons/MapPinLine.svg";
 export default function Hero({ onSearch }) {
   const [position, setPosition] = useState("");
   const [location, setLocation] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  // Call onSearch automatically if both fields are empty
+  // Call onSearch automatically if both fields are empty (only once initially)
   useEffect(() => {
     if (!position && !location) {
       onSearch({ position: "", location: "" });
@@ -14,9 +16,27 @@ export default function Hero({ onSearch }) {
   }, [position, location, onSearch]);
 
   const handleSearch = () => {
-    if (onSearch) {
-      onSearch({ position, location });
+    if (isLoading) return;
+
+    if (!position.trim() && !location.trim()) {
+      setError("Please enter a position or location before searching.");
+
+      setTimeout(() => {
+        setError("");
+      }, 4000);
+
+      return;
     }
+
+    setError("");
+    setIsLoading(true);
+
+    setTimeout(() => {
+      if (onSearch) {
+        onSearch({ position, location });
+      }
+      setIsLoading(false);
+    }, 2000);
   };
 
   const handleKeyDown = (e) => {
@@ -54,10 +74,15 @@ export default function Hero({ onSearch }) {
             />
           </div>
 
-          <button className="btn" onClick={handleSearch}>
+          <button
+            className={`btn ${isLoading ? "loading-s" : ""}`}
+            onClick={handleSearch}
+          >
             Search
           </button>
         </div>
+
+        {error && <p className="error-message">{error}</p>}
       </div>
     </section>
   );

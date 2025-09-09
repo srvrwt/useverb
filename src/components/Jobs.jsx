@@ -21,12 +21,21 @@ function highlightText(text, query, showHighlight) {
 export default function JobListings({ jobsData, searchTerm }) {
   const [visibleJobs, setVisibleJobs] = useState(12);
   const [showHighlight, setShowHighlight] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const loadMore = () => {
-    setVisibleJobs((prev) => prev + 12);
+    if (isLoading) return; // prevent multiple clicks
+
+    setIsLoading(true);
+
+    // ⏳ run actual load after 2s
+    setTimeout(() => {
+      setVisibleJobs((prev) => prev + 12);
+      setIsLoading(false);
+    }, 2000);
   };
 
-  // Trigger highlight for 5 seconds whenever searchTerm changes
+  // Trigger highlight for 3 seconds whenever searchTerm changes
   useEffect(() => {
     if (searchTerm.position || searchTerm.location) {
       setShowHighlight(true);
@@ -110,7 +119,12 @@ export default function JobListings({ jobsData, searchTerm }) {
 
         {visibleJobs < filteredJobs.length && (
           <div className="load-more-container">
-            <Button text="Load More" onClick={loadMore} showArrow />
+            <Button
+              text="Load More"
+              onClick={loadMore}
+              showArrow
+              className={isLoading ? "loading-s" : ""}
+            />
           </div>
         )}
       </div>

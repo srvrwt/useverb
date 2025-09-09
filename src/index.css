@@ -65,7 +65,7 @@ body {
   background: var(--orange);
   border-radius: 12px;
   max-width: max-content;
-  font-size: 20px;
+  font-size: clamp(16px, 3vw, 20px);
   font-weight: 500;
   color: var(--solid-black);
   transition: all 200ms ease-in-out;
@@ -76,6 +76,22 @@ body {
   min-width: 150px;
   text-align: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn.loading-s:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--orange);
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23000000FF' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='12' r='3'%3E%3Canimate id='spinner_jObz' begin='0;spinner_vwSQ.end-0.25s' attributeName='r' dur='0.75s' values='3;.2;3'/%3E%3C/circle%3E%3Ccircle cx='12' cy='12' r='3'%3E%3Canimate begin='spinner_jObz.end-0.6s' attributeName='r' dur='0.75s' values='3;.2;3'/%3E%3C/circle%3E%3Ccircle cx='20' cy='12' r='3'%3E%3Canimate id='spinner_vwSQ' begin='spinner_jObz.end-0.45s' attributeName='r' dur='0.75s' values='3;.2;3'/%3E%3C/circle%3E%3C/svg%3E");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .btn:active {
@@ -109,13 +125,13 @@ img {
 header>.container {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   justify-content: space-between;
   max-width: 1240px;
 }
 
 h1 {
-  font-size: clamp(50px, 8vw, 70px);
+  font-size: clamp(46px, 8vw, 70px);
   text-transform: capitalize;
   font-weight: 500;
 }
@@ -149,5 +165,30 @@ h4 {
 }
 
 p {
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+@media (max-width:1024px) {
+  header {
+    padding: 30px 30px 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 30px 15px 80px;
+  }
+
+  .btn-arrow {
+    width: 20px;
+    height: 18px;
+  }
+
+  .btn {
+    gap: 10px;
+    padding: 14px 18px;
+    min-width: 136px;
+    height: 52px;
+
+  }
 }

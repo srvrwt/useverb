@@ -26,7 +26,7 @@
     align-items: center;
     padding: 16px 18px;
     background: var(--body-bg);
-    border-radius: 16px;
+    border-radius: 12px;
     gap: 16px;
     width: 100%;
 }
@@ -50,10 +50,25 @@
     font-size: 16px;
     color: var(--white);
     width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .search-input input::placeholder {
     color: #ffffff80;
+}
+
+.error-message {
+    font-size: 16px;
+    width: 100%;
+    margin-top: 8px;
+    color: #ff1c1c;
+    font-weight: 500;
+    font-family: 'Outfit Regular';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .jobs-grid {
@@ -170,7 +185,8 @@
     width: calc(100% - 32px);
     margin: 24px auto 0;
     color: var(--orange);
-    font-size: 18px;
+    font-size: clamp(16px, 3vw, 18px);
+
     height: 56px;
     align-items: baseline;
     border-radius: 16px;
@@ -263,6 +279,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
     gap: 16px;
 }
 
@@ -279,6 +296,7 @@
     text-decoration: none;
     font-weight: 500;
     transition: all 200ms ease-in-out;
+    white-space: nowrap;
 }
 
 .footer-nav a:hover {
@@ -301,6 +319,7 @@
 .footer-bottom p {
     font-family: 'Outfit Regular';
     color: #ffffff80;
+    text-align: center;
 
 }
 
@@ -313,6 +332,7 @@
     align-items: center;
     gap: 10px;
     list-style: none;
+    justify-content: center;
 }
 
 .social-media a {
@@ -344,4 +364,174 @@
 .highlight {
     background-color: var(--orange);
     color: var(--white);
+}
+
+
+@media (max-width:1024px) {
+
+
+    .newsletter {
+        padding: 120px 30px;
+    }
+
+    .footer-bottom {
+        padding: 30px 0;
+    }
+
+    .jobs-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .newsletter .container {
+        border-radius: 30px;
+        padding: 30px 0 30px 30px;
+    }
+
+    .footer-bottom {
+
+        justify-content: center;
+        column-gap: 60px;
+        row-gap: 24px;
+    }
+}
+
+@media (max-width:768px) {
+
+
+    .hero {
+        padding: 0 15px 100px;
+    }
+
+    .search-input+.search-input {
+        width: 50%;
+    }
+
+    .search-input+.search-input,
+    .search-bar>* {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .search-bar {
+        flex-wrap: wrap;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .jobs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .job-card .btn {
+        margin: 18px auto 0;
+        border-radius: 12px;
+    }
+
+    .job-img-wrap {
+        border-radius: 12px;
+    }
+
+    .social-media {
+        flex-wrap: wrap;
+    }
+
+    .social-media a {
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+    }
+
+    .newsletter .container {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        padding: 0;
+    }
+
+    .content-wrapper {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .newsletter .img-wrapper {
+        width: 100%;
+    }
+
+
+    .jobs-section {
+        padding: 56px 15px;
+    }
+
+    .newsletter {
+        padding: 60px 15px;
+    }
+
+    .footer-menu-wrap {
+        justify-content: left;
+    }
+
+    .footer {
+        padding: 60px 15px 0;
+    }
+
+    .job-card .btn {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    .site-info .logo {
+        max-width: 220px;
+    }
+
+    .site-info p {
+        margin-top: 20px;
+    }
+
+    .newsletter .container {
+        border-radius: 20px;
+
+    }
+
+    .content-wrapper {
+        padding: 0 20px 20px;
+    }
+
+    .footer-bottom {
+        margin-top: 40px;
+        flex-direction: column-reverse;
+    }
+
+    .job-header {
+        gap: 12px;
+    }
+
+    .job-title {
+        margin-bottom: 2px;
+        font-size: 14px;
+    }
+
+    .search-input {
+        padding: 14px 15px;
+        gap: 15px;
+
+    }
+}
+
+
+@media (max-width:580px) {
+    .footer-menu {
+        flex-wrap: wrap;
+        justify-content: left;
+    }
+
+    .footer-bottom p {
+        font-size: 16px;
+    }
+
+    .error-message {
+        font-size: 14px;
+
+    }
 }
