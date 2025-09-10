@@ -62,12 +62,19 @@ export default function JobListings({ jobsData, searchTerm }) {
   return (
     <section className="jobs-section">
       <div className="container">
-        <h3 className="section-title">Popular Openings Today</h3>
+        <h3 className="section-title" data-aos="fade">
+          Popular Openings Today
+        </h3>
 
         <div className="jobs-grid">
           {filteredJobs.length > 0 ? (
-            filteredJobs.slice(0, visibleJobs).map((job) => (
-              <div key={job.id} className="job-card">
+            filteredJobs.slice(0, visibleJobs).map((job, index) => (
+              <div
+                key={job.id}
+                className="job-card"
+                data-aos="fade"
+                data-aos-delay={index * 100}
+              >
                 <div className="job-img-wrap">
                   <img src={job.image} alt={job.title} className="job-image" />
                   <div className="job-details">
@@ -124,6 +131,8 @@ export default function JobListings({ jobsData, searchTerm }) {
               onClick={loadMore}
               showArrow
               className={isLoading ? "loading-s" : ""}
+              data-aos="fade"
+              data-aos-delay="300"
             />
           </div>
         )}

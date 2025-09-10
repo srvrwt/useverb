@@ -1,9 +1,12 @@
 import { useState } from "react";
 import "./App.css";
+import "aos/dist/aos.css";
+import AOS from "aos";
+
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import JobListings from "./components/Jobs";
-import jobsData from "./components/jobsData"; // keep your existing import
+import jobsData from "./components/jobsData";
 import Newsletter from "./components/NewsLetter";
 import Footer from "./components/Footer";
 
@@ -13,6 +16,11 @@ function App() {
   const handleSearch = ({ position, location }) => {
     setSearchTerm({ position, location });
   };
+
+  AOS.init({
+    duration: 2000, // default animation duration
+    once: true, // animate only once when element appears
+  });
 
   return (
     <>

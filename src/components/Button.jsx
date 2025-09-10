@@ -8,14 +8,15 @@ export default function Button({
   showArrow = true,
   target = "_self",
   className = "",
+  ...props
 }) {
   return href ? (
-    <a href={href} target={target} className={`btn ${className}`}>
+    <a href={href} target={target} className={`btn ${className}`} {...props}>
       <span>{text}</span>
       {showArrow && <img src={ArrowIcon} alt="arrow" className="btn-arrow" />}
     </a>
   ) : (
-    <button onClick={onClick} className={`btn ${className}`}>
+    <button onClick={onClick} className={`btn ${className}`} {...props}>
       <span>{text}</span>
       {showArrow && <img src={ArrowIcon} alt="arrow" className="btn-arrow" />}
     </button>
