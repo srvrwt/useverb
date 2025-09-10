@@ -8,6 +8,7 @@ export default function Hero({ onSearch }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Call onSearch automatically if both fields are empty (only once initially)
   useEffect(() => {
     if (!position && !location) {
       onSearch({ position: "", location: "" });
@@ -47,11 +48,10 @@ export default function Hero({ onSearch }) {
   return (
     <section className="hero">
       <div className="container">
-        <h1 data-aos="fade-up" data-aos-delay="500">
+        <h1>
           Find your <span>new job</span> today
         </h1>
-
-        <div className="search-bar" data-aos="fade-up" data-aos-delay="1000">
+        <div className="search-bar">
           <div className="search-input">
             <img src={SearchIcon} alt="search" className="icon" />
             <input
